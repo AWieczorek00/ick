@@ -1,0 +1,378 @@
+<div *ngFor="let item of daily$ | async">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <ul class="list-group list-group-horizontal" style="padding-left: 360px">
+        <li class="list-group-item" style="border: 0; width: 70px">Białka</li>
+        <li class="list-group-item" style="border: 0; width: 72px">Tłuszcze</li>
+        <li class="list-group-item" style="border: 0; width: 70px">Węgl.</li>
+      </ul>
+      <div>
+        <strong class="meals"
+          >Śniadanie
+
+          <button
+            type="button"
+            class="btn add-button rounded-circle"
+            (click)="open(content)"
+          >
+            +
+          </button></strong
+        >
+
+        <div class="mt-1 mealBar" *ngFor="let breakfast of item.breakfast">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ breakfast.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.carbohydrates }}
+            </li>
+            <li class="list-group-item mealStyle" style="padding-left: 35px">
+              <button
+                type="button"
+                class="deleteBtn"
+                (click)="onBreakfastDeleteClicked(breakfast, item)"
+              >
+                X
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <ul class="list-group">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let meal of meals$ | async"
+                  >
+                    <div>
+                      <h5>
+                        {{ meal.name }}
+                        <button
+                          type="button"
+                          (click)="
+                            onBreakfastClicked(meal, item);
+                            modal.close('Save click')
+                          "
+                          class="btn btn-primary"
+                          style="position: absolute; left: 83%"
+                        >
+                          Dodaj
+                        </button>
+                      </h5>
+                    </div>
+                    {{ meal.weight }}
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Zamkni
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div>
+        <strong class="meals"
+          >Obiad
+          <button
+            type="button"
+            class="btn add-button rounded-circle"
+            (click)="open(dinner)"
+          >
+            +
+          </button></strong
+        >
+        <ng-template #dinner let-modal>
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <ul class="list-group">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let meal of meals$ | async"
+                  >
+                    <div>
+                      <h5>
+                        {{ meal.name }}
+                        <button
+                          type="button"
+                          (click)="
+                            onDinnerClicked(meal, item);
+                            modal.close('Save click')
+                          "
+                          class="btn btn-primary"
+                          style="position: absolute; left: 83%"
+                        >
+                          Dodaj
+                        </button>
+                      </h5>
+                    </div>
+                    {{ meal.weight }}
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Zamkni
+            </button>
+          </div>
+        </ng-template>
+
+        <div class="mt-1 mealBar" *ngFor="let dinner of item.dinner">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ dinner.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.carbohydrates }}
+            </li>
+            <li class="list-group-item mealStyle" style="padding-left: 35px">
+              <button
+                type="button"
+                class="deleteBtn"
+                (click)="onDinnerDeleteClicked(dinner, item)"
+              >
+                X
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div>
+        <strong class="meals"
+          >Podwieczorek
+          <button
+            type="button"
+            class="btn add-button rounded-circle"
+            (click)="open(lunch)"
+          >
+            +
+          </button></strong
+        >
+        <ng-template #lunch let-modal>
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <ul class="list-group">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let meal of meals$ | async"
+                  >
+                    <div>
+                      <h5>
+                        {{ meal.name }}
+                        <button
+                          type="button"
+                          (click)="
+                            onLunchClicked(meal, item);
+                            modal.close('Save click')
+                          "
+                          class="btn btn-primary"
+                          style="position: absolute; left: 83%"
+                        >
+                          Dodaj
+                        </button>
+                      </h5>
+                    </div>
+                    {{ meal.weight }}
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Zamkni
+            </button>
+          </div>
+        </ng-template>
+
+        <div class="mt-1 mealBar" *ngFor="let lunch of item.lunch">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ lunch.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.carbohydrates }}
+            </li>
+            <li class="list-group-item mealStyle" style="padding-left: 35px">
+              <button
+                type="button"
+                class="deleteBtn"
+                (click)="onLunchDeleteClicked(lunch, item)"
+              >
+                X
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div>
+        <strong class="meals"
+          >Kolacja
+          <button
+            type="button"
+            class="btn add-button rounded-circle"
+            (click)="open(supper)"
+          >
+            +
+          </button></strong
+        >
+        <ng-template #supper let-modal>
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <ul class="list-group">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let meal of meals$ | async"
+                  >
+                    <div>
+                      <h5>
+                        {{ meal.name }}
+                        <button
+                          type="button"
+                          (click)="
+                            onSupperClicked(meal, item);
+                            modal.close('Save click')
+                          "
+                          class="btn btn-primary"
+                          style="position: absolute; left: 83%"
+                        >
+                          Dodaj
+                        </button>
+                      </h5>
+                    </div>
+                    {{ meal.weight }}
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Zamkni
+            </button>
+          </div>
+        </ng-template>
+        <div class="mt-1 mealBar" *ngFor="let supper of item.supper">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ supper.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.carbohydrates }}
+            </li>
+            <li class="list-group-item mealStyle" style="padding-left: 35px">
+              <button
+                type="button"
+                class="deleteBtn"
+                (click)="onSupperDeleteClicked(supper, item)"
+              >
+                X
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

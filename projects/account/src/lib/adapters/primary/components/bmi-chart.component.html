@@ -1,0 +1,13 @@
+<!-- <h3>Twoje pomiary</h3> -->
+<!-- <div echarts [options]="chartOption"></div> -->
+<h3>Twoje BMI wynosi</h3>
+<div *ngIf="user$ | async as user">
+  <h4 [ngStyle]="{'color':getColor(user.bmi)}">
+    {{ user.bmi }}
+  </h4>
+  <div *ngIf="18 > user.bmi">Niedowaga</div>
+  <div *ngIf="user.bmi >= 18 && user.bmi < 25">W normie</div>
+  <div *ngIf="user.bmi >= 25 && user.bmi < 29">Nadwaga</div>
+  <div *ngIf="user.bmi >= 29 && user.bmi < 40">Otyłośc</div>
+  <div *ngIf="user.bmi >= 40">Poważna otyłość</div>
+</div>

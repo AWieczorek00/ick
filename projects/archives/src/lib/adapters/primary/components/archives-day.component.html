@@ -1,0 +1,128 @@
+`<input
+  type="date"
+  [ngModel]="myDate | date: 'yyyy-MM-dd'"
+  (ngModelChange)="myDate = $event"
+/>`
+
+<div *ngFor="let item of daily$ | async">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <ul class="list-group list-group-horizontal" style="padding-left: 360px">
+        <li class="list-group-item" style="border: 0; width: 70px">Białka</li>
+        <li class="list-group-item" style="border: 0; width: 72px">Tłuszcze</li>
+        <li class="list-group-item" style="border: 0; width: 70px">Węgl.</li>
+      </ul>
+      <div>
+        <strong class="meals">Śniadanie</strong>
+        <div class="mt-1 mealBar" *ngFor="let breakfast of item.breakfast">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ breakfast.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ breakfast.carbohydrates }}
+            </li>
+            <li
+              class="list-group-item mealStyle"
+              style="padding-left: 35px"
+            ></li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div>
+        <strong class="meals">Obiad </strong>
+        <div class="mt-1 mealBar" *ngFor="let dinner of item.dinner">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ dinner.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ dinner.carbohydrates }}
+            </li>
+            <li
+              class="list-group-item mealStyle"
+              style="padding-left: 35px"
+            ></li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div>
+        <strong class="meals">Podwieczorek </strong>
+        <div class="mt-1 mealBar" *ngFor="let lunch of item.lunch">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ lunch.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ lunch.carbohydrates }}
+            </li>
+            <li
+              class="list-group-item mealStyle"
+              style="padding-left: 35px"
+            ></li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div>
+        <strong class="meals">Kolacja </strong>
+
+        <div class="mt-1 mealBar" *ngFor="let supper of item.supper">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item mealStyleName">
+              {{ supper.name }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.kcal }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.proteins }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.fats }}
+            </li>
+            <li class="list-group-item mealStyle">
+              {{ supper.carbohydrates }}
+            </li>
+            <li
+              class="list-group-item mealStyle"
+              style="padding-left: 35px"
+            ></li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,32 @@
+<div class="input-group mx-auto" style="width: 200px;">
+    <strong>Nowy produkt</strong>
+</div>
+
+<form [formGroup]="newMeal" (ngSubmit)="onNewMealSubmited(newMeal)" class="pt-5">
+    <div class="input-group mb-3">
+        <strong>Wartości odżywcze na 100 g</strong>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1" style="width: 180px;">Nazwa</span>
+        <input class="form-control" type="text" formControlName="name" placeholder="Nazwa">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1" style="width: 180px;">Wartośc energetyczna</span>
+        <input class="form-control" type="number" formControlName="kcal" placeholder="Kcal">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1" style="width: 180px;">Białka</span>
+        <input class="form-control" type="number" formControlName="proteins" placeholder="Białka">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1" style="width: 180px;">Tłuszcze</span>
+        <input class="form-control" type="number" formControlName="fats" placeholder="Tłuszcze">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1" style="width: 180px;">Węglowodany</span>
+        <input class="form-control" type="number" formControlName="carbohydrates" placeholder="Węglowodany">
+    </div>
+    <div class="input-group mb-3">
+        <input class="form-control" type="submit" value="Zapisz">
+    </div>
+</form>

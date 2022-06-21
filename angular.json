@@ -5,11 +5,7 @@
   "projects": {
     "ICK": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+      "schematics": { "@schematics/angular:application": { "strict": true } },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -22,12 +18,11 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": []
           },
@@ -67,20 +62,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "ICK:build:production"
-            },
-            "development": {
-              "browserTarget": "ICK:build:development"
-            }
+            "production": { "browserTarget": "ICK:build:production" },
+            "development": { "browserTarget": "ICK:build:development" }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ICK:build"
-          }
+          "options": { "browserTarget": "ICK:build" }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -89,14 +78,163 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ICK:build:production",
+            "firebaseProject": "ick-foodic",
+            "firebaseHostingSite": "ick-foodic"
+          }
+        }
+      }
+    },
+    "static-element": {
+      "projectType": "library",
+      "root": "projects/static-element",
+      "sourceRoot": "projects/static-element/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": { "project": "projects/static-element/ng-package.json" },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/static-element/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/static-element/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "-daily-meals": {
+      "projectType": "library",
+      "root": "projects/-daily-meals",
+      "sourceRoot": "projects/-daily-meals/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": { "project": "projects/-daily-meals/ng-package.json" },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/-daily-meals/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/-daily-meals/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "new-meal": {
+      "projectType": "library",
+      "root": "projects/new-meal",
+      "sourceRoot": "projects/new-meal/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": { "project": "projects/new-meal/ng-package.json" },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/new-meal/tsconfig.lib.prod.json"
+            },
+            "development": { "tsConfig": "projects/new-meal/tsconfig.lib.json" }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "meal": {
+      "projectType": "library",
+      "root": "projects/meal",
+      "sourceRoot": "projects/meal/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": { "project": "projects/meal/ng-package.json" },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/meal/tsconfig.lib.prod.json"
+            },
+            "development": { "tsConfig": "projects/meal/tsconfig.lib.json" }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "products": {
+      "projectType": "library",
+      "root": "projects/products",
+      "sourceRoot": "projects/products/src",
+      "prefix": "lib",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/products"],
+          "options": {
+            "jestConfig": "projects/products/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "bmi": {
+      "projectType": "library",
+      "root": "projects/bmi",
+      "sourceRoot": "projects/bmi/src",
+      "prefix": "lib",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/bmi"],
+          "options": {
+            "jestConfig": "projects/bmi/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "account": {
+      "projectType": "library",
+      "root": "projects/account",
+      "sourceRoot": "projects/account/src",
+      "prefix": "lib",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/account"],
+          "options": {
+            "jestConfig": "projects/account/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "archives": {
+      "projectType": "library",
+      "root": "projects/archives",
+      "sourceRoot": "projects/archives/src",
+      "prefix": "lib",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/archives"],
+          "options": {
+            "jestConfig": "projects/archives/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

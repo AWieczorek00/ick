@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -18,10 +17,17 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "@static-element": ["projects/static-element/src/index.ts"],
+      "@-daily-meals": ["projects/-daily-meals/src/index.ts"],
+      "@new-meal": ["projects/new-meal/src/index.ts"],
+      "@meal": ["projects/meal/src/index.ts"],
+      "@products": ["projects/products/src/index.ts"],
+      "@bmi": ["projects/bmi/src/index.ts"],
+      "@account": ["projects/account/src/index.ts"],
+      "@archives": ["projects/archives/src/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,0 +1,62 @@
+<h3>Twój profil</h3>
+<div *ngIf="user$ | async as user">
+  <div class="input-group mb-2">
+    <span class="input-group-text" id="name" style="width: 75px">Imię</span>
+    <input
+      type="text"
+      [disabled]="inputActive"
+      class="form-control"
+      placeholder="Imię"
+      aria-label="name"
+      [value]="user.name"
+      id="name"
+      #name
+    />
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text" id="weight" style="width: 75px">Waga</span>
+    <input
+      type="text"
+      [disabled]="inputActive"
+      class="form-control"
+      placeholder="Waga"
+      aria-label="weight"
+      [value]="user.weight[user.weight.length - 1]"
+      id="weight"
+      #weight
+    />
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text" id="height" style="width: 75px">Wzrost</span>
+    <input
+      type="text"
+      [disabled]="inputActive"
+      class="form-control"
+      placeholder="Wzrost"
+      aria-label="height"
+      [value]="user.height"
+      id="height"
+      #height
+    />
+  </div>
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic example"
+    style="margin-left: 76%"
+  >
+    <button type="button" class="btn button me-3" (click)="setEnableClick()">
+      Edytuj
+    </button>
+    <button
+      type="button"
+      class="btn button"
+      (click)="
+        onUserDataSubmited(user.weight, name.value, weight.value, height.value)
+      "
+    >
+      Zapisz
+    </button>
+  </div>
+</div>
+<hr />

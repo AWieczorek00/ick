@@ -1,0 +1,43 @@
+.meals {
+  font-size: x-large;
+}
+.add-button {
+  position: sticky;
+  left: 70%;
+
+  background-color: green;
+  font-weight: bolder;
+  color: white;
+}
+
+.nameApp {
+  color: green;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.mealStyleName {
+  border: 0;
+  background-color: #e8e8e8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+.mealStyle {
+  border: 0;
+  background-color: #e8e8e8;
+  width: 70px;
+}
+
+.deleteBtn {
+  width: 30px;
+  border: 0;
+  background-color: #e8e8e8;
+}
+
+.mealBar {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+}

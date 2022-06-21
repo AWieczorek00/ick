@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ick-foodic": {
+      "hosting": {
+        "ICK": [
+          "ick-foodic"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ick-foodic"
+  }
+}
